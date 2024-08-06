@@ -8,6 +8,7 @@ public class Playermovement : MonoBehaviour
     public CharacterController controller;
     public float speed = 12f;
     public float gravity = -9.81f;
+    public bool disabled = false;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -39,5 +40,9 @@ public class Playermovement : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        if(disabled) {
+            controller.enabled = false;
+        }
     }
 }

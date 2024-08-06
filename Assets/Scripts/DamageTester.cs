@@ -11,9 +11,17 @@ public class DamageTester : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hitInfo);
+            {
+                if (hitInfo.collider.gameObject);
                 {
                     playerAtm.DealDamage(enemyAtm.gameObject);
                 }
+
+                
+
+            }
+            
+
         }
    
     }
