@@ -20,7 +20,8 @@ public class Interactor : MonoBehaviour
         {
             // will cast a ray cast from the player and detect if it interacts with a collider
             Ray r = new Ray(InteractionSource.position, InteractionSource.forward);
-            if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange)) { 
+            if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange)) 
+            { 
             if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
                 {
                     interactObj.Interact();
