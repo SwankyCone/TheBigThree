@@ -1,3 +1,5 @@
+using Photon.Pun;
+using Photon;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +7,8 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class FPSController : MonoBehaviour
 {
+    PhotonView photonView;
+    [SerializeField] GameObject cam;
     public Camera playerCamera;
     public float walkSpeed = 6f;
     public float runSpeed = 12f;
@@ -21,12 +25,33 @@ public class FPSController : MonoBehaviour
 
     CharacterController characterController;
 
+    private void Awake()
+    {
+        photonView = GetComponent<PhotonView>();
+        Debug.Log(photonView == null ? "PhotonView is null!" : "PhotonView is initialized.");
+        if (photonView.IsMine)
+        {
+            characterController = GetComponent<CharacterController>();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            cam.SetActive(true);
+        }
+        else
+        {
+            enabled = false;
+        }
+
+        
+
+    }
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+
+        //characterController = GetComponent<CharacterController>();
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
     void Update()
