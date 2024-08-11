@@ -71,13 +71,29 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         playerID = PhotonNetwork.PlayerList.Length - 1;
         connectionStatus = $"playerID : {playerID}";
 
-        SpawnPlayer();
+        if (playerID == 0)
+        {
+            
+            SpawnPlayer();
+        }
+        else
+        {
+            SpawnSurvivor();
+        }
+    
 
     }
+
+
 
     void SpawnPlayer()
     {
         PhotonNetwork.Instantiate("Player",Vector3.up, Quaternion.identity);
+    }
+
+    void SpawnSurvivor()
+    {
+        PhotonNetwork.Instantiate("Survivor", Vector3.up, Quaternion.identity);
     }
 
     public void OnGUI()
