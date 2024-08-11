@@ -21,6 +21,8 @@ public class FPSController : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
 
+    
+
     public bool canMove = true;
 
     CharacterController characterController;
@@ -45,6 +47,8 @@ public class FPSController : MonoBehaviour
         
 
     }
+
+   
 
     void Start()
     {
